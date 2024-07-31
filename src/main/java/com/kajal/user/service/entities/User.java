@@ -1,10 +1,10 @@
 package com.kajal.user.service.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Builder
@@ -21,13 +21,15 @@ public class User {
     private String email;
     @Column(name = "ABOUT")
     private String about;
+    @Transient
+    private List<Rating> Ratings=new ArrayList<>();
 
-
-    public User(String user_Id, String name, String email, String about) {
+    public User(String user_Id, String name, String email, String about, List<Rating> ratings) {
         this.user_Id = user_Id;
         this.name = name;
         this.email = email;
         this.about = about;
+        Ratings = ratings;
     }
 
     public String getUser_Id() {
@@ -60,5 +62,13 @@ public class User {
 
     public void setAbout(String about) {
         this.about = about;
+    }
+
+    public List<Rating> getRatings() {
+        return Ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        Ratings = ratings;
     }
 }
