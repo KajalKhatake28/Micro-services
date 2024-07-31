@@ -6,11 +6,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
-@Getter
-@Setter
+
 @Builder
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "micro_users")
 public class User {
@@ -24,6 +22,43 @@ public class User {
     @Column(name = "ABOUT")
     private String about;
 
-    public void setUserId(String randomUserId) {
+
+    public User(String user_Id, String name, String email, String about) {
+        this.user_Id = user_Id;
+        this.name = name;
+        this.email = email;
+        this.about = about;
+    }
+
+    public String getUser_Id() {
+        return user_Id;
+    }
+
+    public void setUserId(String user_Id) {
+        this.user_Id = user_Id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
     }
 }
